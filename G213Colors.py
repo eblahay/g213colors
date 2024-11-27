@@ -29,6 +29,7 @@ import sys
 import usb.core
 import usb.util
 import binascii
+from argparse import ArgumentParser
 
 
 standardColorHex = 'ffb4aa'         # default color, i found this color to produce a white color on my G213
@@ -133,33 +134,36 @@ def printInfo():
     print('  abbreviated formats are not allowed')
     print('* Time is in milliseconds in the range of 32 to 65535')
 
+def main():
+    # option to use
+    if numArguments > 1:
+        option = str(sys.argv[1])
+    # if no option found, exit
+    if '-' not in option:
+        printInfo()
+        sys.exit(1)
 
-# option to use
-if numArguments > 1:
-    option = str(sys.argv[1])
-# if no option found, exit
-if '-' not in option:
-    printInfo()
-    sys.exit(1)
+    connectG()
 
-connectG()
-
-# send command depending on option used and argument count
-if 'c' in option:
-    if numArguments == 2:
-        sendColorCommand(standardColorHex)
-    elif numArguments == 3:
-        sendColorCommand(sys.argv[2])
-    elif numArguments == 7:
-        for index in range(1, 6):
-            sendColorCommand(sys.argv[index + 1], index)
+    # send command depending on option used and argument count
+    if 'c' in option:
+        if numArguments == 2:
+            sendColorCommand(standardColorHex)
+        elif numArguments == 3:
+            sendColorCommand(sys.argv[2])
+        elif numArguments == 7:
+            for index in range(1, 6):
+                sendColorCommand(sys.argv[index + 1], index)
+        else:
+            printInfo()
+    elif 'b' in option and numArguments == 4:
+        sendBreatheCommand(sys.argv[2], sys.argv[3])
+    elif 'x' in option and numArguments == 3:
+        sendCycleCommand(sys.argv[2])
     else:
         printInfo()
-elif 'b' in option and numArguments == 4:
-    sendBreatheCommand(sys.argv[2], sys.argv[3])
-elif 'x' in option and numArguments == 3:
-    sendCycleCommand(sys.argv[2])
-else:
-    printInfo()
 
-disconnectG()
+    disconnectG()
+
+if __name__ == "__main__":
+    main()
