@@ -1,4 +1,4 @@
-# G213Colors
+# G213Colors (eblahay Fork)
 A script to change the key colors on a Logitech G213 Prodigy Gaming Keyboard.
 
 Please also check out these awesome forks:
@@ -31,9 +31,8 @@ Either download the [G213Colors.py](https://raw.githubusercontent.com/SebiTimeWa
 ### Prerequisites
 * [Python](https://www.python.org/) >= 2.4 or 3.x (which is usually already installed)
 * [PyUSB](https://github.com/walac/pyusb)
-* [RandomColor](https://github.com/davidmerfield/randomColor)
 
-If you run the script as Root (Which is likely) please install the libraries also as root (E.g.: `sudo pip3 install pyusb`, `sudo pip3 install randomcolor`, use only "pip" for Python 2).
+If you run the script as Root (Which is likely) please install the libraries also as root (E.g.: `sudo pip3 install pyusb`, use only "pip" for Python 2).
 
 Please ignore the pcap directory, i added the pcap files i used for reverse engineering just in case someone wants to work with them. They can be opened with [Wireshark](https://en.wikipedia.org/wiki/Wireshark).
 
@@ -52,6 +51,7 @@ ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c33
 ```
 
 ## Changelog
+
 Changelog v0.3:
 * Added feature: Assign random colors to keyboard by using -ra or -rs flag
 

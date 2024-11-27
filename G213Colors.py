@@ -29,10 +29,9 @@ import sys
 import usb.core
 import usb.util
 import binascii
-import randomcolor
 
 
-standardColorHex = 'ffb4aa'         # Standard color, i found this color to produce a white color on my G213
+standardColorHex = 'ffb4aa'         # default color, i found this color to produce a white color on my G213
 idVendor         = 0x046d           # The id of the Logitech company
 idProduct        = 0xc336           # The id of the G213
 bEndpointAddress = 0x82             # Endpoint to read data back from
@@ -118,28 +117,15 @@ def sendCycleCommand(speed):
         commandHex = cycleCommand.format(speedHex)
         sendData(commandHex)
 
-def getRandomColor():
-    return randomcolor.RandomColor().generate()[0][1:]
-
-def setRandomColor():
-    colorHex = getRandomColor()
-    sendColorCommand(colorHex)
-
-def setRandomColorSegments():
-    for i in range(1, 6):
-        sendColorCommand(getRandomColor(), i)
-
 def printInfo():
     print('G213Colors - Changes the key colors on a Logitech G213 Prodigy Gaming Keyboard')
     print('')
     print('Options:')
-    print('-c                         Set the standard color (white)')
+    print('-c                         Set the default color (white)')
     print('-c  <color>                Set a custom color')
     print('-c  <color1> ... <color5>  Set custom colors for all 5 segments')
     print('-b  <color> <time>         Sets a color breathing animation')
     print('-x  <time>                 Sets a color cycling animation')
-    print('-ra                        Sets a random color for whole keyboard')
-    print('-rs                        Sets different random color for every segment')
     print('')
     print('Please note:')
     print('* Color is a hex encoded color in the format RRGGBB')
@@ -173,10 +159,6 @@ elif 'b' in option and numArguments == 4:
     sendBreatheCommand(sys.argv[2], sys.argv[3])
 elif 'x' in option and numArguments == 3:
     sendCycleCommand(sys.argv[2])
-elif 'ra' in option and numArguments == 2:
-    setRandomColor()
-elif 'rs' in option and numArguments == 2:
-    setRandomColorSegments()
 else:
     printInfo()
 
