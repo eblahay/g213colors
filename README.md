@@ -52,13 +52,21 @@ ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c33
 
 ## Changelog
 
-Changelog v0.3:
+0.1.0:
+* Gutted random colors feature from pre-fork-v0.3
+    * Consequently, removed dependency on randomcolors library
+* defined main() method
+* switched to using Python argparse library for parsing CLI args
+
+### Pre-Fork
+
+0.3:
 * Added feature: Assign random colors to keyboard by using -ra or -rs flag
 
-Changelog v0.2:
+0.2:
 * Fixed bug preventing setting all 5 color fields correctly, thanks to @oncecreated for finding this solution!
 * Added propper validation of user inputs
 * Complete refactoring
 
-Changelog v0.1:
+0.1:
 * Initial checkin
