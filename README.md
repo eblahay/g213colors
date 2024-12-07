@@ -2,7 +2,7 @@
 
 A Python script to change the key colors on a Logitech G213 Prodigy Gaming Keyboard.
 
-Forked from: SebiTimeWaster's [G213Colors](https://github.com/SebiTimeWaster/G213Colors).
+Forked from: TimeWaster's [G213Colors](https://github.com/SebiTimeWaster/G213Colors).
 
 ## Installation
 ### Dependencies
